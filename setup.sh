@@ -1,6 +1,5 @@
 apt-get update -y
-apt-get dist-upgrade -y
-apt-get upgrade -y
+apt-get full-upgrade -y
 apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
 apt-get remove --autoremove burpsuite -y \
     && apt-get purge burpsuite
@@ -42,18 +41,18 @@ wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7
 wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7_windows_amd64.gz -O /home/binaries/chisel_1.7.7_windows_amd64.gz \
     && gzip -d /home/binaries/chisel_1.7.7_windows_amd64.gz \
     && mv /home/binaries/chisel_1.7.7_windows_amd64 /home/binaries/chisel.exe
-mkdir -p $HOME/.local/share/fonts
-wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Bold Italic.ttf"
-wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Italic.ttf"
-wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Bold.ttf"
-wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Regular.ttf"
+mkdir -p /home/parrot/.local/share/fonts
+wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Bold Italic.ttf"
+wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Italic.ttf"
+wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Bold.ttf"
+wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Regular.ttf"
 wget -c https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O /home/Downloads/install.sh \
     && chmod +x /home/Downloads/install.sh \
-    && sed -i 's/RUNZSH=${RUNZSH:-yes}/RUNZSH=${RUNZSH:-no}/g' \
-    && /home/Downloads/install.sh
+    && sed -i 's/RUNZSH=${RUNZSH:-yes}/RUNZSH=${RUNZSH:-no}/g' /home/Downloads/install.sh \
+    && /home/Downloads/install.sh \
     && rm /home/Downloads/install.sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k/g"' $HOME/.zshrc
-mkdir -p $HOME/.config/terminator
-wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O $HOME/.config/terminator/config
-wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.p10k.zsh -O $HOME/.p10k.zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-/home/parrot/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' /home/parrot/.zshrc
+mkdir -p /home/parrot/.config/terminator
+wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O /home/parrot/.config/terminator/config
+wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.p10k.zsh -O /home/parrot/.p10k.zsh
