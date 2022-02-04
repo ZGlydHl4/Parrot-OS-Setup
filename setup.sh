@@ -44,9 +44,10 @@ wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Italic.ttf"
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Bold.ttf"
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O "$HOME/.local/share/fonts/MesloLGS NF Regular.ttf"
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 sed -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"' $HOME/.zshrc
 mkdir -p $HOME/.config/terminator
 wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O $HOME/.config/terminator/config
 wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.p10k.zsh -O $HOME/.p10k.zsh
+SHELL=/usr/bin/zsh
