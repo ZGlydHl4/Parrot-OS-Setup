@@ -2,9 +2,12 @@ apt-get update -y
 apt-get dist-upgrade -y
 apt-get upgrade -y
 apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
+apt-get remove --autoremove burpsuite -y \
+    && apt-get purge burpsuite
+apt-get autoremove
 systemctl start postgresql \
     && msfdb init
-apt-get install
+sh -c $(curl -fsSl "https://portswigger-cdn.net/burp/releases/download?product=community&version=2021.12.1&type=Linux")
 gzip -d /usr/share/wordlists/rockyou.txt.gz
 wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O /usr/share/wordlists/SecList.zip \
     && unzip /usr/share/wordlists/SecList.zip -y \
