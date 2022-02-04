@@ -1,6 +1,5 @@
 apt-get update -y
-apt-get dist-upgrade -y
-apt-get upgrade -y
+apt-get full-upgrade -y
 apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
 apt-get remove --autoremove burpsuite -y \
     && apt-get purge burpsuite
