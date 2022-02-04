@@ -49,3 +49,4 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 sed -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"' $HOME/.zshrc
 mkdir -p $HOME/.config/terminator
 wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O $HOME/.config/terminator/config
+wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.p10k.zsh -O $HOME/.p10k.zsh
