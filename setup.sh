@@ -1,9 +1,9 @@
-apt-get update -y
-apt-get full-upgrade -y
-apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
 apt-get remove --autoremove burpsuite -y \
     && apt-get purge burpsuite
 apt-get autoremove
+apt-get update -y
+apt-get full-upgrade -y
+apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
 systemctl start postgresql \
     && msfdb init
 sh -c $(curl -fsSl "https://portswigger-cdn.net/burp/releases/download?product=community&version=2021.12.1&type=Linux")
