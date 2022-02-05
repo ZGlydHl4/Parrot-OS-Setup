@@ -52,3 +52,4 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' /
 mkdir -p /home/parrot/.config/terminator
 wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O /home/parrot/.config/terminator/config
 chsh -s /bin/zsh parrot
+reboot
