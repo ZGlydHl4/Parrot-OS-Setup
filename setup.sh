@@ -1,9 +1,9 @@
 apt-get remove --autoremove burpsuite -y \
-    && apt-get purge burpsuite
-apt-get autoremove
+    && apt-get purge burpsuite -y
+apt-get autoremove -y
 apt-get update -y
 apt-get full-upgrade -y
-apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop -y
+apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop gcc-multilib -y
 systemctl start postgresql \
     && msfdb init
 sh -c $(curl -fsSl "https://portswigger-cdn.net/burp/releases/download?product=community&version=2021.12.1&type=Linux")
@@ -14,33 +14,33 @@ wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O /usr/sh
 wget -c https://github.com/NationalSecurityAgency/ghidra/releases/latest/download/ghidra_10.1.2_PUBLIC_20220125.zip -O /usr/share/ghidra_10.1.2_PUBLIC_20220125.zip \
     && unzip /usr/share/ghidra_10.1.2_PUBLIC_20220125.zip \
     && rm -f /usr/share/ghidra_10.1.2_PUBLIC_20220125.zip
-wget -c https://out7.hex-rays.com/files/idafree77_linux.run -O /home/Downloads/idafree77_linux.run
-chmod +x /home/Downloads/idafree77_linux.run
-/home/Downloads/idafree77_linux.run
+wget -c https://out7.hex-rays.com/files/idafree77_linux.run -O /home/parrot/Downloads/idafree77_linux.run
+chmod +x /home/parrot/Downloads/idafree77_linux.run
+/home/parrot/Downloads/idafree77_linux.run
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - \
-    && apt-get install apt-transport-https \
-    && echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list \
+    && apt-get install apt-transport-https -y \
+    && echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list \
     && apt-get update -y \
     && apt-get install sublime-text -y
-git clone https://github.com/longld/peda.git /home/peda \
-    && echo "source /home/peda/peda.py" >> /home/.gdbinit \
+git clone https://github.com/longld/peda.git /home/parrot/peda \
+    && echo "source /home/parrot/peda/peda.py" >> /home/parrot/.gdbinit \
     && echo "DONE! debug your program with gdb and enjoy"
-mkdir /home/binaries
-wget -c https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64 -O /home/binaries/pspy64 \
-    && chmod +x /home/binaries/pspy64
-wget -c https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas_linux_amd64 -O /home/binaries/linpeas \
-    && chmod +x /home/binaries/linpeas
-wget -c https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe -O /home/binaries/winPEAS.exe
-wget -c https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/ncat -O /home/binaries/ncat \
-    && chmod +x /home/binaries/ncat
-wget -c https://github.com/int0x33/nc.exe/raw/master/nc64.exe -O /home/binaries/ncat.exe
-wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7_linux_amd64.gz -O /home/binaries/chisel_1.7.7_linux_amd64.gz \
-    && gzip -d /home/binaries/chisel_1.7.7_linux_amd64.gz \
-    && mv /home/binaries/chisel_1.7.7_linux_amd64 /home/binaries/chisel \
-    && chmod +x /home/binaries/chisel
-wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7_windows_amd64.gz -O /home/binaries/chisel_1.7.7_windows_amd64.gz \
-    && gzip -d /home/binaries/chisel_1.7.7_windows_amd64.gz \
-    && mv /home/binaries/chisel_1.7.7_windows_amd64 /home/binaries/chisel.exe
+mkdir /home/parrot/binaries
+wget -c https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64 -O /home/parrot/binaries/pspy64 \
+    && chmod +x /home/parrot/binaries/pspy64
+wget -c https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas_linux_amd64 -O /home/parrot/binaries/linpeas \
+    && chmod +x /home/parrot/binaries/linpeas
+wget -c https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe -O /home/parrot/binaries/winPEAS.exe
+wget -c https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/ncat -O /home/parrot/binaries/ncat \
+    && chmod +x /home/parrot/binaries/ncat
+wget -c https://github.com/int0x33/nc.exe/raw/master/nc64.exe -O /home/parrot/binaries/ncat.exe
+wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7_linux_amd64.gz -O /home/parrot/binaries/chisel_1.7.7_linux_amd64.gz \
+    && gzip -d /home/parrot/binaries/chisel_1.7.7_linux_amd64.gz \
+    && mv /home/parrot/binaries/chisel_1.7.7_linux_amd64 /home/binaries/chisel \
+    && chmod +x /home/parrot/binaries/chisel
+wget -c https://github.com/jpillora/chisel/releases/latest/download/chisel_1.7.7_windows_amd64.gz -O /home/parrot/binaries/chisel_1.7.7_windows_amd64.gz \
+    && gzip -d /home/parrot/binaries/chisel_1.7.7_windows_amd64.gz \
+    && mv /home/parrot/binaries/chisel_1.7.7_windows_amd64 /home/binaries/chisel.exe
 mkdir -p /home/parrot/.local/share/fonts
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Bold Italic.ttf"
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Italic.ttf"
