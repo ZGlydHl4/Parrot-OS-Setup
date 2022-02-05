@@ -6,7 +6,9 @@ apt-get full-upgrade -y
 apt-get install exploitdb wpscan sshuttle open-vm-tools open-vm-tools-desktop gcc-multilib -y
 systemctl start postgresql \
     && msfdb init
-sh -c $(curl -fsSl "https://portswigger-cdn.net/burp/releases/download?product=community&version=2021.12.1&type=Linux")
+wget "https://portswigger-cdn.net/burp/releases/download?product=community&version=2021.12.1&type=Linux" -O /home/parrot/Downloads/burpsuite.sh \
+    && chmod +x /home/parrot/Downloads/burpsuite.sh \
+    && /home/parrot/Downloads/burpsuite.sh
 gzip -d /usr/share/wordlists/rockyou.txt.gz
 wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O /usr/share/wordlists/SecList.zip \
     && unzip /usr/share/wordlists/SecList.zip -y \
