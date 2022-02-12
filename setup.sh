@@ -50,7 +50,13 @@ wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%
 wget -c https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O "/home/parrot/.local/share/fonts/MesloLGS NF Regular.ttf"
 mkdir -p /home/parrot/.config/terminator
 wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/config -O /home/parrot/.config/terminator/config
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/parrot/powerlevel10k
-echo 'source /home/parrot/powerlevel10k/powerlevel10k.zsh-theme' >> /home/parrot/.zshrc
-chsh -s /bin/zsh parrot
+wget -c https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O /home/parrot/Downloads/install.sh \
+    && chmod +x /home/parrot/Downloads/install.sh \
+    && sed -i 's/RUNZSH=${RUNZSH:-yes}/RUNZSH=${RUNZSH:-no}/g' /home/parrot/Downloads/install.sh \
+    && sudo -H -u parrot /home/parrot/Downloads/install.sh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-/home/parrot/.oh-my-zsh/custom}/themes/powerlevel10k \
+    && sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' /home/parrot/.zshrc \
+    && wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.p10k.zsh -O /home/parrot/.p10k.zsh \
+    && rm /home/parrot/.zshrc \
+    && wget -c https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.zshrc -O /home/parrot/.zshrc
 reboot
