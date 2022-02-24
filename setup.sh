@@ -27,7 +27,7 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 apt-get remove --autoremove -y gdb \
     && apt-get purge -y gdb \
     && rm -rf /usr/share/gdb \
-    && git clone https://github.com/pwndbg/pwndbg /home/parrot/pwngdb
+    && git clone https://github.com/pwndbg/pwndbg /home/parrot/pwngdb \
     && sudo -H -u parrot /home/parrot/pwngdb/setup.sh
 mkdir /home/parrot/binaries
 wget -c https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64 -O /home/parrot/binaries/pspy64 \
