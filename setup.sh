@@ -24,9 +24,9 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
     && echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list \
     && apt-get update -y \
     && apt-get install sublime-text -y
-apt-get remove --autoremove gdb \
-    && apt-get purge gdb \
-    && remove -rf /usr/share/gdb \
+apt-get remove --autoremove -y gdb \
+    && apt-get purge -y gdb \
+    && rm -rf /usr/share/gdb \
     && git clone https://github.com/pwndbg/pwndbg /home/parrot/pwngdb
     && sudo -H -u parrot /home/parrot/pwngdb/setup.sh
 mkdir /home/parrot/binaries
