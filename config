@@ -1,25 +1,25 @@
 [global_config]
-  title_transmit_fg_color = "#000000"
-  title_transmit_bg_color = "#e5a50a"
-  title_receive_fg_color = "#000000"
-  title_receive_bg_color = "#e5a50a"
-  title_inactive_bg_color = "#e5a50a"
+  title_inactive_bg_color = "#4C566A"
+  title_inactive_fg_color = "#D8DEE9"
+  title_receive_bg_color = "#8FBCBB"
+  title_receive_fg_color = "#2E3440"
+  title_transmit_bg_color = "#88C0D0"
+  title_transmit_fg_color = "#2E3440"
 [keybindings]
   new_tab = <Primary>n
   split_horiz = <Primary>h
   split_vert = <Primary>t
 [profiles]
   [[default]]
-    background_color = "#241f31"
+    background_color = "#2E3440"
+    cursor_color = "#D8DEE9"
     cursor_blink = False
     cursor_shape = underline
-    cursor_color = "#e5a50a"
-    cursor_color_fg = False
-    font = MesloLGS NF 12
-    foreground_color = "#f5c211"
-    scrollback_lines = 5000
-    palette = "#3d3846:#e5a50a:#e01b24:#cdab8f:#ed333b:#9141ac:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    font = MesloLGS NF Bold 12
     use_system_font = False
+    scrollback_lines = 5000 
+    foreground_color = "#D8DEE9"
+    palette = "#3B4252:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#88C0D0:#E5E9F0:#4C566A:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#8FBCBB:#ECEFF4"
 [layouts]
   [[default]]
     [[[window0]]]
