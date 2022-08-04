@@ -70,13 +70,13 @@ echo "[17/34] Downloading vscode"
 wget -q https://code.visualstudio.com/docs/?dv=linux64_deb -O /tmp/tmp_downloads/vscode.deb
 
 echo "[18/34] Downloading pwndbg"
-git clone https://github.com/pwndbg/pwndbg /home/parrot/pwndbg
+git clone https://github.com/pwndbg/pwndbg /home/parrot/pwndbg > /dev/null 2>&1
 
 echo "[19/34] Downloading CrackMapExec"
-git clone https://github.com/Porchetta-Industries/CrackMapExec /home/parrot/CrackMapExec
+git clone https://github.com/Porchetta-Industries/CrackMapExec /home/parrot/CrackMapExec > /dev/null 2>&1
 
 echo "[20/34] Downloading powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-/home/parrot/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-/home/parrot/.oh-my-zsh/custom}/themes/powerlevel10k > /dev/null 2>&1
 
 echo "[21/34] Downloading BurpSuite"
 wget -q "https://portswigger-cdn.net/burp/releases/download?type=Linux" -O /tmp/tmp_downloads/burpsuite.sh
@@ -92,18 +92,21 @@ mkdir -p /opt/wordlists/SecLists \
   && tar xf /tmp/tmp_downloads/SecLists.tar.gz -C /opt/wordlists/SecLists --strip-components 1
 
 echo "[25/34] Installing  Ghidra"
-unzip /tmp/tmp_downloads/ghidra.zip -d /opt/ \
+unzip /tmp/tmp_downloads/ghidra.zip -d /opt/ > /dev/null 2>&1 \
   && mv /opt/ghidra_* /opt/Ghidra \
   && alias ghidra=/opt/Ghidra/ghidraRun
 
 echo "[26/34] Installing  chisel"
-gzip -d /tmp/tmp_downloads/chisel_linux.gz; mv /tmp/tmp_downloads/chisel_linux.gz /opt/binaries/chisel_linux
-gzip -d /tmp/tmp_downloads/chisel_windows.gz; mv /tmp/tmp_downloads/chisel_windows.gz /opt/binaries/chisel_windows
+gzip -d /tmp/tmp_downloads/chisel_linux.gz \
+  && mv /tmp/tmp_downloads/chisel_linux /opt/binaries/chisel_linux
+
+gzip -d /tmp/tmp_downloads/chisel_windows.gz \
+  && mv /tmp/tmp_downloads/chisel_windows /opt/binaries/chisel_windows
 
 echo "[27/34] Installing sublime-text"
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add - > /dev/null 2>&1 \
   && apt-get -qq install apt-transport-https -y > /dev/null 2>&1 \
-  && echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list \
+  && echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list \
   && apt-get -qq update -y > /dev/null 2>&1 \
   && apt-get -qq install sublime-text -y > /dev/null 2>&1
 
