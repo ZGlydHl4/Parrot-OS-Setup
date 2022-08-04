@@ -22,7 +22,7 @@ chisel_linux_url=$(curl -Ls "https://github.com/jpillora/chisel/releases/latest"
 chisel_windows_url=$(curl -Ls "https://github.com/jpillora/chisel/releases/latest" | grep "/jpillora/chisel/releases/download/" | grep "windows_amd64" | cut -d '"' -f 2)
 
 echo "[3/34] Downloading additionnals packages"
-apt-get install -y --allow-downgrades open-vm-tools open-vm-tools-desktop libcom-err2=1.46.2-2 zsh zsh-autosuggestions nfs-common default-mysql-client dnsenum libssl-dev libkrb5-dev libffi-dev python-dev-is-python3 build-essential jq exploitdb colortest ftp snmp hashid > /dev/null 2&>1
+apt-get install -y --allow-downgrades open-vm-tools open-vm-tools-desktop rdesktop zsh zsh-autosuggestions nfs-common default-mysql-client dnsenum libssl-dev libkrb5-dev libffi-dev python-dev-is-python3 build-essential jq exploitdb colortest ftp snmp hashid > /dev/null 2&>1
 
 echo "[4/34] Downloading SecLists"
 wget -q https://github.com$secLists_url -O /tmp/tmp_downloads/SecLists.tar.gz
