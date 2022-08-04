@@ -67,7 +67,7 @@ echo "[16/34] Downloading zsh config file"
 wget -q https://raw.githubusercontent.com/ZGlydHl4/Parrot-OS-Setup/master/.zshrc -O /tmp/tmp_downloads/.zshrc
 
 echo "[17/34] Downloading vscode"
-wget -q https://code.visualstudio.com/docs/?dv=linux64_deb -O /tmp/tmp_downloads/vscode.deb
+wget -q https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O /tmp/tmp_downloads/vscode.deb
 
 echo "[18/34] Downloading pwndbg"
 git clone https://github.com/pwndbg/pwndbg /home/parrot/pwndbg > /dev/null 2>&1
