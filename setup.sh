@@ -91,12 +91,12 @@ echo "[24/34] Installing SecLists"
 mkdir -p /opt/wordlists/SecLists \
   && tar xf /tmp/tmp_downloads/SecLists.tar.gz -C /opt/wordlists/SecLists --strip-components 1
 
-echo "[25/34] Installing  Ghidra"
+echo "[25/34] Installing Ghidra"
 unzip /tmp/tmp_downloads/ghidra.zip -d /opt/ > /dev/null 2>&1 \
   && mv /opt/ghidra_* /opt/Ghidra \
   && alias ghidra=/opt/Ghidra/ghidraRun
 
-echo "[26/34] Installing  chisel"
+echo "[26/34] Installing chisel"
 gzip -d /tmp/tmp_downloads/chisel_linux.gz \
   && mv /tmp/tmp_downloads/chisel_linux /opt/binaries/chisel_linux
 
