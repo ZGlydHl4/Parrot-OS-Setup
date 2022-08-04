@@ -82,7 +82,7 @@ echo "[21/34] Downloading BurpSuite"
 wget -q "https://portswigger-cdn.net/burp/releases/download?type=Linux" -O /tmp/tmp_downloads/burpsuite.sh
 
 echo "[22/34] Preparing for installation"
-&& chown -R parrot:parrot /tmp/tmp_downloads
+chown -R parrot:parrot /tmp/tmp_downloads
 
 echo "[23/34] Installing rockyou"
 gzip -d /usr/share/wordlists/rockyou.txt.gz
