@@ -142,6 +142,6 @@ chmod +x /tmp/tmp_downloads/burpsuite.sh \
 echo "[34/34] Finalizing installation"
 chown -R parrot:parrot /opt/
 chown -R parrot:parrot /home/parrot/
-echo "alias username-anarchy=/opt/username-anarchy/username-anarchy"
+echo "alias username-anarchy=/opt/username-anarchy/username-anarchy" >> /home/parrot/.zshrc
 
 echo "[!] Please reboot to make all changes applies !"
