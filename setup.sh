@@ -78,10 +78,10 @@ echo "[19/34] Downloading BurpSuite"
 wget -q "https://portswigger-cdn.net/burp/releases/download?type=Linux" -O /tmp/tmp_downloads/burpsuite.sh
 
 echo "[20/34] Downloading & installing CrackMapExec"
-python3 -m pip install pipx
+python -m pip install pipx
 pipx ensurepath
+source /home/parrot/.zshrc
 pipx install crackmapexec
-# git clone https://github.com/Porchetta-Industries/CrackMapExec /home/parrot/CrackMapExec 
 
 echo "[21/34] Preparing for installation"
 chown -R parrot:parrot /tmp/tmp_downloads
