@@ -4,7 +4,7 @@ echo "[1/34] Initialization"
 apt-get update 
 apt-get full-upgrade -y 
 apt-get autoremove --purge -y 
-apt-get autoremove --purge -y burpsuite 
+apt-get autoremove --purge -y burpsuite gdb
 mkdir -p /tmp/tmp_downloads/
 mkdir -p /opt/binaries/
 mkdir -p /home/parrot/.local/share/fonts/
@@ -22,7 +22,7 @@ chisel_linux_url=$(curl -Ls "https://github.com/jpillora/chisel/releases/latest"
 chisel_windows_url=$(curl -Ls "https://github.com/jpillora/chisel/releases/latest" | grep "/jpillora/chisel/releases/download/" | grep "windows_amd64" | cut -d '"' -f 2)
 
 echo "[3/34] Downloading additionnals packages"
-apt-get install -y --allow-downgrades open-vm-tools open-vm-tools-desktop rdesktop zsh zsh-autosuggestions nfs-common default-mysql-client dnsenum libssl-dev libkrb5-dev libffi-dev python-dev-is-python3 build-essential jq exploitdb colortest ftp snmp hashid > /dev/null 2&>1
+apt-get install -y open-vm-tools open-vm-tools-desktop rdesktop zsh zsh-autosuggestions nfs-common default-mysql-client dnsenum libssl-dev libkrb5-dev libffi-dev python-dev-is-python3 build-essential jq exploitdb colortest ftp snmp hashid > /dev/null 2&>1
 
 git clone https://github.com/urbanadventurer/username-anarchy.git /opt/
 
@@ -74,11 +74,14 @@ wget -q https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
 echo "[18/34] Downloading pwndbg"
 git clone https://github.com/pwndbg/pwndbg /home/parrot/pwndbg 
 
-echo "[19/34] Downloading CrackMapExec"
-git clone https://github.com/Porchetta-Industries/CrackMapExec /home/parrot/CrackMapExec 
-
-echo "[20/34] Downloading BurpSuite"
+echo "[19/34] Downloading BurpSuite"
 wget -q "https://portswigger-cdn.net/burp/releases/download?type=Linux" -O /tmp/tmp_downloads/burpsuite.sh
+
+echo "[20/34] Downloading & installing CrackMapExec"
+python3 -m pip install pipx
+pipx ensurepath
+pipx install crackmapexec
+# git clone https://github.com/Porchetta-Industries/CrackMapExec /home/parrot/CrackMapExec 
 
 echo "[21/34] Preparing for installation"
 chown -R parrot:parrot /tmp/tmp_downloads
@@ -116,8 +119,7 @@ echo "[28/34] Installing CrackMapExec"
 cd /home/parrot/CrackMapExec; poetry install > /dev/null 2&>1; poetry run crackmapexec > /dev/null 2&>1
 
 echo "[29/34] Installing pwndbg"
-apt-get autoremove --purge -y gdb > /dev/null 2&>1 \
-  && rm -rf /usr/share/gdb \
+rm -rf /usr/share/gdb \
   && chown -R parrot:parrot /home/parrot/pwndbg \
   && sudo -H -u parrot /home/parrot/pwndbg/setup.sh > /dev/null 2&>1
 
